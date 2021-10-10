@@ -11,19 +11,34 @@ Menu, Tray, Add, &Exit, _Exit ;add a item named Exit that goes to the ButtonExit
 AppName = Key Remapper
 TrayTip, %AppName%, %AppName% is running, 1, 1
 
-; Alt+Shift+= presses NumPad + button
-!+=::
+; RightShift + = presses NumPad+ button
+RShift & =::
 Send, {NumpadAdd}
 return
 
-; Alt+Shift+- presses NumPad - button
-!+-::
+; RightShift + - presses NumPad- button
+RShift & -::
 Send, {NumpadSub}
 return
 
-; Alt+Shift+8 presses NumPad * button
-!+8::
+; RightShift + 8 presses NumPad* button
+RShift & 8::
 Send, {NumpadMult}
+return
+
+; RightCtrl + = presses Ctrl + NumPad+ combination
+RControl & =::
+Send, ^{NumpadAdd}
+return
+
+; RightCtrl + - presses Ctrl + NumPad- combination
+RControl & -::
+Send, ^{NumpadSub}
+return
+
+; RightCtrl + 8 presses Ctrl + NumPad* combination
+RControl & 8::
+Send, ^{NumpadMult}
 return
 
 ; LeftControl+RightControl exit from remaper
@@ -31,7 +46,7 @@ LControl & RControl::
 ExitApp
 
 _Help:
-MsgBox, 64, %AppName%, Remapped Keys`n`n[ALT+SHIFT+=] > Numpad+`n[ALT+SHIFT+-]  > Numpad-`n[ALT+SHIFT+8] > Numpad*`n`n[LCtrl+RCtrl] > Close the App
+MsgBox, 64, %AppName%, Remapped Keys`n`n[RShift+=] > Numpad+`n[RShift+-]  > Numpad-`n[RShift+8] > Numpad*`n[RCtrl+=] > Ctrl + Numpad+`n[RCtrl+-] > Ctrl + Numpad-`n[RCtrl+8] > Ctrl + Numpad*`n`n[LCtrl+RCtrl] > Close the App
 return
 
 _Exit:
